@@ -1,23 +1,20 @@
-const mongoose = require('mongoose');
-require("dotenv").config();
-const { MONGOLAB_URI, API_PORT } = process.env;
+import mongoose from "mongoose";
 
-mongoose.Promise = global.Promise;
 
-try {
-  //mongoose .connect('mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb', {
-    mongoose.connect(MONGOLAB_URI, {
+const connectDB = async () => {
+  let db_url = process.env.DATABASE_URL || "mongodb://127.0.0.1:27017/Logistics"
+
+  mongoose.connect(db_url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
+  })
+  mongoose.connection.on("connected", () => {
+    console.log(`Connected to Database`);
   });
-} catch (err) {
-  throw err;
+  mongoose.connection.on("error", (err) => {
+    console.error("Connection Error:", err);
+  });
+  return
 }
 
-mongoose.connection.on("connected", () => {
-  console.log(`connected to database`);
-});
-
-// To Remove moongoose deprecation warnings
-mongoose.set("useFindAndModify", true);
-mongoose.set("useCreateIndex", true);
+export { connectDB }

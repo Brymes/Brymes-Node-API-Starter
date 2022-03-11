@@ -1,7 +1,5 @@
-const index = (req, res, next) => {
-  res.status(200).json({ message: "Welcome to my api" });
+const index = async (req, res,) => {
+  res.status(200).json({ message: "Welcome to my api", request: req.body });
 };
 
-module.exports = {
-  index,
-};
+export { index };

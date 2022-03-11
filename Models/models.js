@@ -1,9 +1,11 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema;
+/* import mongoose from "mongoose";
+
+const mgSchema = mongoose.Schema;
 const customerSchema = new mongoose.Schema({
   isActive: { type: Boolean, default: true },
   // timeActive: {type: }
 },
   { timestamps: true });
+const Customer = mongoose.model('customer', customerSchema)
 
-module.exports = mongoose.model('customer', customerSchema);
+export { Customer } */

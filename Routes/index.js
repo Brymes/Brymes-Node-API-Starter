@@ -1,8 +1,8 @@
-const express = require('express');
-const { index } = require('../Controllers/index');
+import express from "express";
+import { index } from "../Controllers/index.js";
 
-const index = express.Router();
+const routerIndex = express.Router();
 
-index.get('/', index);
+routerIndex.get('/', index);
 
-module.exports.index = index;
+export { routerIndex }
